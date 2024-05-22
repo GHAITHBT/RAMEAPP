@@ -1,0 +1,36 @@
+.Sidebar {
+  position: fixed;
+  top: 60px; /* Height of the header */
+  left: 0;
+  height: calc(100% - 60px); /* Height of the header */
+  width: 150px; /* Width of the sidebar */
+  background-color: #489139;
+  overflow: hidden;
+  padding-top: 20px; /* Adjust the padding as needed */
+}
+
+.Sidebar .nav-link {
+  display: block;
+  color: white;
+  text-align: left;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.Sidebar .nav-link:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .Sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .Sidebar .nav-link {
+    text-align: center;
+    padding: 10px;
+  }
+}

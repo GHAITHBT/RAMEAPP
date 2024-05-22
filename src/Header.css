@@ -1,0 +1,25 @@
+/* Header.css */
+
+.Header {
+  position: sticky;
+  top: 0;
+  left: 150px; /* Added margin equal to sidebar width */
+  width: calc(100% - 150px); /* Adjusted width to account for the sidebar */
+  height: 70px;
+  background-color: #ebebebb9;
+  color: #2e21a0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.Header h1 {
+  font-size: 30px;
+}
+
+.logo {
+  margin-right: 10px; /* Added margin to separate logo from the edge */
+}

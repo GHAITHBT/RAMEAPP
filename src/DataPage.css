@@ -1,0 +1,73 @@
+.DataPage {
+    padding: 0px;
+    margin-top: 10vh;
+  }
+  
+  .filters {
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .export-buttons {
+    margin-bottom: 20px;
+  }
+  
+  .export-buttons button {
+    margin-right: 10px;
+  }
+  
+  .summary {
+    margin-top: 20px;
+  }
+  
+  .summary div {
+    margin-bottom: 20px;
+  }
+  /* DataPage.css */
+.ChartsPage {
+  text-align: center;
+}
+ 
+.charts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+ 
+.chart {
+  flex: 1 1 30%;
+  max-width: 30%;
+  min-width: 300px;
+}
+/* DataPage.css */
+
+.Dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+}
+

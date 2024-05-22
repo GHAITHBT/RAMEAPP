@@ -1,0 +1,84 @@
+/* App.css */
+
+#root {
+  height: 100%;
+}
+
+.App {
+  text-align: center;
+  margin-top: 0vh;
+  margin-left: 0vh;
+  background-image: url('./l.png'); /* Adjusted to load from the public folder */
+  background-size: cover; /* Adjusted to contain the image within the element */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Added to fix the background image */
+  height: 100%; /* Adjusted to fill the entire viewport */
+  overflow: hidden; /* Changed to 'hidden' to prevent double scroll bars */
+}
+
+.Content {
+  padding: 20px; /* Adjusted padding for content */
+  background-color: rgba(255, 255, 255, 0.856); /* Slightly transparent background for readability */
+  margin-left: 150px; /* To ensure content is not under the sidebar */
+  height: calc(100% - 60px); /* Adjusted to account for the header */
+  overflow: auto; /* Added overflow to enable scrolling if content exceeds height */
+}
+
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container form div {
+  margin-bottom: 14px;
+}
+
+.form-container form label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-container form input,
+.form-container form select {
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #949494;
+  border-radius: 4px;
+  background-color: #ebebebd5;
+}
+
+button {
+  padding: 10px;
+  background-color: #2e21a0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #000000;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #007bff;
+}

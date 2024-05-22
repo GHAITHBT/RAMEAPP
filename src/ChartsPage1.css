@@ -1,0 +1,123 @@
+
+
+.dashboard-container {
+  display: flex;
+  background-color: dimgray;
+}
+
+
+
+
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+ 
+
+
+.chart-item {
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.export-buttons {
+  margin-top: 20px;
+}
+.DataPage {
+  padding: 0px;
+  margin-top: 2vh;
+}
+
+.filters {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.export-buttons {
+  margin-bottom: 20px;
+}
+
+.export-buttons button {
+  margin-right: 10px;
+}
+
+
+/* DataPage.css */
+.ChartsPage {
+text-align: center;
+}
+
+
+
+.chart {
+flex: 1 1 30%;
+max-width: 30%;
+min-width: 300px;
+}
+/* DataPage.css */
+
+.Dashboard {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.summary {
+display: flex;
+justify-content: space-around;
+align-items: flex-start;
+width: 100%;
+}
+
+.top-employees-container {
+  margin-top: 30px;
+}
+
+.top-employees-list {
+  list-style: none;
+  padding: 0;
+}
+
+.top-employee-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.employee-name {
+  font-weight: bold;
+}
+
+.employee-total {
+  color: #555;
+}
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0px;
+}
+
+.chart-container {
+  width: 500px;
+  height: 500px;
+}

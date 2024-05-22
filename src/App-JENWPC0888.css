@@ -1,0 +1,71 @@
+.App {
+  text-align: center;
+  margin-top: 3vh;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container form div {
+  margin-bottom: 10px;
+}
+
+.form-container form label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-container form input {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.Content {
+  margin-top: 
+  10px; /* Height of the header */
+  margin-left: 150px; /* Width of the sidebar */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .Content {
+    margin-top: 50px; /* Adjusted height for the smaller header */
+    margin-left: 0;
+  }
+}
