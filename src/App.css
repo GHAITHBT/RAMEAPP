@@ -8,13 +8,18 @@
   text-align: center;
   margin-top: 0vh;
   margin-left: 0vh;
+  height: 100%; /* Adjusted to fill the entire viewport */
+  overflow: hidden; /* Changed to 'hidden' to prevent double scroll bars */
+}
+
+.main-content {
   background-image: url('./l.png'); /* Adjusted to load from the public folder */
   background-size: cover; /* Adjusted to contain the image within the element */
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed; /* Added to fix the background image */
   height: 100%; /* Adjusted to fill the entire viewport */
-  overflow: hidden; /* Changed to 'hidden' to prevent double scroll bars */
+  
 }
 
 .Content {

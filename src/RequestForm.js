@@ -1,43 +1,48 @@
-// import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import DataPage from './DataPage/DataPage';
-import Navbar from './Navbar';
-import Header from './Header';
-import Dashboard from './Dashboard';
-import ChartsPage from './ChartsPage';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+const RequestForm = () => {
   const [formData, setFormData] = useState({
     bonN: '',
     employeDemandeur: '',
     matriculeDemandeur: '',
     departement: '',
     kst: '',
-    quantiteA4: '',
-    quantiteA3: '',
-    quantiteA5: '',
+    quantiteA4: 0, // Set default value to 0
+    quantiteA3: 0, // Set default value to 0
+    quantiteA5: 0, // Set default value to 0
     copycenter: '',
     dateReception: '',
     dateProchaine: ''
   });
-
-  useEffect(() => {
-    // Set default value for Date of receipt (today's date)
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      dateReception: new Date().toISOString().split('T')[0]
-    }));
-
-    // Set default value for Next Date (next week from today's date)
-    const nextWeek = new Date();
-    nextWeek.setDate(nextWeek.getDate() + 7);
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      dateProchaine: nextWeek.toISOString().split('T')[0]
-    }));
-  }, []);
-
+  const fetchEmployeeData = async (field, value) => {
+    try {
+      const response = await fetch(`http://localhost:3001/get-data?${field}=${value}`);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.length > 0) {
+          const {
+            employe_demandeur,
+            matriculedemandeur,
+            departement,
+            kst,
+            copycenter
+          } = data[0]; // Assuming only one record is returned
+          setFormData({
+            ...formData,
+            employeDemandeur: employe_demandeur,
+            matriculeDemandeur: matriculedemandeur,
+            departement: departement,
+            
+            copycenter: copycenter
+          });
+        }
+      } else {
+        console.error('Error fetching employee data');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -68,31 +73,23 @@ function App() {
   };
 
   return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        <Header />
-        <div className="Content">
-          <Routes>
-            <Route
-              path="/Add"
-              element={
-                <div className="form-container">
-                  <h1>Requesting Form</h1>
-                  <form onSubmit={handleSubmit}>
-                    <div>
-                      <label>
-                        Voucher n°:
-                        <input
-                          type="text"
-                          name="bonN"
-                          value={formData.bonN}
-                          onChange={handleChange}
-                          required
-                        />
-                      </label>
-                    </div>
-                    <div>
+    <div className="form-container">
+      <h1>Requesting Form</h1>
+      <form onSubmit={handleSubmit}>
+        {/* Form fields */}
+        <div>
+          <label>
+            Voucher n°:
+            <input
+              type="text"
+              name="bonN"
+              value={formData.bonN}
+              onChange={handleChange}
+              required
+            />
+          </label>
+        </div>
+        <div>
                       <label>
                         Requesting Employee:
                         <input
@@ -100,6 +97,7 @@ function App() {
                           name="employeDemandeur"
                           value={formData.employeDemandeur}
                           onChange={handleChange}
+                          onBlur={(e) => fetchEmployeeData('employe_demandeur', e.target.value)}
                           required
                         />
                       </label>
@@ -112,8 +110,8 @@ function App() {
                           name="matriculeDemandeur"
                           value={formData.matriculeDemandeur}
                           onChange={handleChange}
+                          onBlur={(e) => fetchEmployeeData('matriculedemandeur', e.target.value)}
                           required
-                          
                         />
                       </label>
                     </div>
@@ -172,7 +170,7 @@ function App() {
                         <input
                           type="number"
                           name="quantiteA4"
-                          value={formData.quantiteA4}
+                          value={formData.quantiteA4 || 0}
                           onChange={handleChange}
                         />
                       </label>
@@ -183,7 +181,7 @@ function App() {
                         <input
                           type="number"
                           name="quantiteA3"
-                          value={formData.quantiteA3}
+                          value={formData.quantiteA3 || 0}
                           onChange={handleChange}
                         />
                       </label>
@@ -194,7 +192,7 @@ function App() {
                         <input
                           type="number"
                           name="quantiteA5"
-                          value={formData.quantiteA5}
+                          value={formData.quantiteA5 || 0}
                           onChange={handleChange}
                         />
                       </label>
@@ -221,20 +219,11 @@ function App() {
                           onChange={handleChange}
                         />
                       </label>
-                    </div>
-                    <button type="submit">Submit</button>
-                  </form>
-                </div>
-              }
-            />
-            <Route path="/data" element={<DataPage />} />
-            <Route path="/Dashboard" element={<Dashboard />} />
-            <Route path="/" element={<ChartsPage />} />
-          </Routes>
-        </div>
-      </div>
-    </Router>
+                    </div>        
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
-}
+};
 
-export default App;
+export default RequestForm;

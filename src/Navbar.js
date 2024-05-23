@@ -7,7 +7,7 @@ import './Navbar.css';
 function Navbar() {
   return (
     <nav className="Sidebar">
-      <Link to="/" className="nav-link">
+      <Link to="/chart" className="nav-link">
         <div className="nav-item">
           <FontAwesomeIcon icon={faChartBar} className="nav-icon" />
           <span style={{marginLeft:"15px"}} className="nav-text">Charts</span>

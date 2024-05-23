@@ -190,6 +190,22 @@ app.delete('/delete-data/:id', (req, res) => {
     }
   });
 });
+// Route to handle login
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  const query = 'SELECT * FROM users WHERE username = ? AND password = ?';
+  
+  db.query(query, [username, password], (err, results) => {
+    if (err) {
+      console.error('Error during login:', err);
+      res.status(500).send('Error during login');
+    } else if (results.length > 0) {
+      res.send('Login successful');
+    } else {
+      res.status(401).send('Invalid username or password');
+    }
+  });
+});
  
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

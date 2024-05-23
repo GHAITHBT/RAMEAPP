@@ -204,7 +204,9 @@ function ExportableChart() {
   const exportToPDF = async () => {
     const pdf = new jsPDF('landscape');
     const scaleFactor = window.devicePixelRatio || 1;
-  
+    const currentDate = new Date();
+    const chartDateTime = currentDate.toISOString().replace(/:/g, '-').replace(/T/g, '_').slice(0, -5); // Format: YYYY-MM-DD_HH-MM
+
     for (let i = 0; i < barChartRefs.current.length; i++) {
       const chartCanvas = barChartRefs.current[i].canvas;
       if (chartCanvas) {
@@ -219,16 +221,14 @@ function ExportableChart() {
         const imgProps = pdf.getImageProperties(imgData);
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-  
+
         pdf.addImage(imgData, 'PNG', 10, 10, pdfWidth - 20, pdfHeight - 20);
         if (i < barChartRefs.current.length - 1) {
           pdf.addPage();
         }
       }
     }
-  
-  
-  
+
     const userChartCanvas = userChartRef.current?.canvas;
     if (userChartCanvas) {
       const userChartImage = await html2canvas(userChartCanvas, { scale: scaleFactor });
@@ -239,9 +239,10 @@ function ExportableChart() {
       pdf.addPage();
       pdf.addImage(imgData, 'PNG', 10, 10, pdfWidth - 20, pdfHeight - 20);
     }
-  
-    pdf.save('charts.pdf');
-  };
+
+    pdf.save(`charts_${chartDateTime}.pdf`);
+};
+
   
   return (
     <div style={{marginTop: "70px"}}>
