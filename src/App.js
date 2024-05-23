@@ -25,14 +25,15 @@ function App() {
       ) : (
         <div className="Content">
           <Routes>
-            <Route
-              path="/Add"
+          <Route
+              path="/chart"
               element={
                 <ProtectedRoute>
-                  <RequestForm />
+                  <ChartsPage />
                 </ProtectedRoute>
               }
             />
+           
             <Route
               path="/data"
               element={
@@ -41,11 +42,11 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/chart"
+           <Route
+              path="/Add"
               element={
                 <ProtectedRoute>
-                  <ChartsPage />
+                  <RequestForm />
                 </ProtectedRoute>
               }
             />

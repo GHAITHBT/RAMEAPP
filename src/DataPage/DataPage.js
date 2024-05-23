@@ -102,15 +102,32 @@ function DataPage() {
   };
 
   const handleExport = () => {
-    const ws = XLSX.utils.json_to_sheet(data);
+    const wsData = data.map(item => ({
+      'Voucher N°': item.bon_n,
+      'Requesting Employee': item.employe_demandeur,
+      'Employee Number': item.matriculedemandeur,
+      'Department': item.departement,
+      'KST': item.kst,
+      'Copy Center': item.copycenter,
+      'Quantity (A4)': item.quantite_a4,
+      'Quantity (A3)': item.quantite_a3,
+      'Quantity (A5)': item.quantite_a5,
+      'Date of receipt': item.date_reception,
+      'Next Date': item.date_prochaine,
+    }));
+  
+    const ws = XLSX.utils.json_to_sheet(wsData);
     const wb = XLSX.utils.book_new();
+    const currentDate = new Date();
+    const chartDateTime = currentDate.toISOString().replace(/:/g, '-').replace(/T/g, '_').slice(0, -5); // Format: YYYY-MM-DD_HH-MM
     XLSX.utils.book_append_sheet(wb, ws, 'Data');
-    XLSX.writeFile(wb, 'exported_data.xlsx');
+    XLSX.writeFile(wb, `Report_${chartDateTime}.xlsx`);
   };
+  
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/delete-data/${id}`);
+      await axios.delete(`http://10.110.22.39:3001/delete-data/${id}`);
       setData(data.filter((item) => item.id !== id));
     } catch (error) {
       console.error('Error deleting data:', error);
@@ -124,7 +141,7 @@ function DataPage() {
   const handleSave = async (id) => {
     const editedItem = data.find((item) => item.id === id);
     try {
-      await axios.put(`http://localhost:3001/update-data/${id}`, editedItem);
+      await axios.put(`http://10.110.22.39:3001/update-data/${id}`, editedItem);
       setEditing(null);
     } catch (error) {
       console.error('Error updating data:', error);

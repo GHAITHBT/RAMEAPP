@@ -119,25 +119,32 @@ const RequestForm = () => {
                       <label>
                         Department:
                         <select
-                          name="departement"
-                          value={formData.departement}
-                          onChange={handleChange}
-                          required
-                          style={{ border: '1px solid black' }}
-                        >
-                          <option value="">Select Department</option>
-                          <option value="PIT">PIT</option>
-                          <option value="PQM">PQM</option>
-                          <option value="PGM">PGM</option>
-                          <option value="PPE">PPE</option>
-                          <option value="PHSE">PHSE</option>
-                          <option value="PHR">PHR</option>
-                          <option value="PPR">PPR</option>
-                          <option value="PCP">PCP</option>
-                          <option value="PMC">PMC</option>
-                          <option value="PPM">PPM</option>
-                          <option value="PLM">PLM</option>
-                        </select>
+  name="departement"
+  value={formData.departement}
+  onChange={handleChange}
+  required
+  style={{
+    border: '1px solid black',
+    height: '30px', // Adjust the height to match other input fields
+    padding: '5px', // Add padding for better appearance
+    borderRadius: '5px', // Add rounded corners for consistency
+    boxSizing: 'border-box', // Ensure the border-box model is used
+    width: '100%' // Ensure the select takes up full width
+  }}
+>
+  <option value="">Select Department</option>
+  <option value="PIT">PIT</option>
+  <option value="PQM">PQM</option>
+  <option value="PGM">PGM</option>
+  <option value="PPE">PPE</option>
+  <option value="PHSE">PHSE</option>
+  <option value="PHR">PHR</option>
+  <option value="PPR">PPR</option>
+  <option value="PCP">PCP</option>
+  <option value="PMC">PMC</option>
+  <option value="PPM">PPM</option>
+  <option value="PLM">PLM</option>
+</select>
                       </label>
                     </div>
                     <div>

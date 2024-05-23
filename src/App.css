@@ -18,8 +18,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed; /* Added to fix the background image */
-  height: 100%; /* Adjusted to fill the entire viewport */
-  
+  height: 100%;
+  min-height: 100vh; /* Adjusted to fill the entire viewport */
 }
 
 .Content {

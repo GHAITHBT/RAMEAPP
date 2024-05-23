@@ -12,19 +12,19 @@ app.use(bodyParser.json());
  
 // MySQL connection
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'Passw0rd123',
-  database: 'ramappschema',
+  host: '10.110.3.102', // Update the host to the IP address of your database server
+  user: 'prog', // Update with your MySQL username
+  password: 'naim', // Update with your MySQL password
+  database: 'rameappschema', // Update with your database name
 });
  
 db.connect((err) => {
   if (err) {
     throw err;
   }
-  console.log('MySQL connected...');
+  console.log('connected...');
 });
- 
+  
 // Route to handle form submission
 app.post('/submit-form', (req, res) => {
   const {

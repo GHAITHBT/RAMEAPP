@@ -112,10 +112,13 @@ function DataPage() {
     const ws = XLSX.utils.json_to_sheet(data);
 
     const wb = XLSX.utils.book_new();
+    const currentDate = new Date();
+    const chartDateTime = currentDate.toISOString().replace(/:/g, '-').replace(/T/g, '_').slice(0, -5); // Format: YYYY-MM-DD_HH-MM
 
-    XLSX.utils.book_append_sheet(wb, ws, 'Data');
 
-    XLSX.writeFile(wb, 'exported_data.xlsx');
+    XLSX.utils.book_append_sheet(wb, ws, 'Data'); 
+
+    XLSX.writeFile(wb, `Report_${chartDateTime}.xlsx`);
 
   };
  

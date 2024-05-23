@@ -22,7 +22,7 @@ const LoginPage = () => {
 
       if (response.ok) {
         login();
-        navigate('/Add');
+        navigate('/Chart');
       } else {
         setError('Invalid username or password');
       }
@@ -32,10 +32,14 @@ const LoginPage = () => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleLogin();
+    }
+  };
+
   return (
-    <div
-     className='back'
-    >
+    <div className='back'>
       <div className="login-form">
         <h2>Login</h2>
         <div>
@@ -52,6 +56,7 @@ const LoginPage = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={handleKeyDown} // Add keydown event listener
           />
         </div>
         {error && <p>{error}</p>}
